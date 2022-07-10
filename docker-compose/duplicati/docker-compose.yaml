@@ -1,0 +1,26 @@
+version: '2.1'
+
+volumes:
+  config:
+  backups:
+  
+networks:
+  default:
+    external:
+      name: frontend       
+
+services:
+  duplicati:
+    image: ghcr.io/linuxserver/duplicati
+    container_name: duplicati-test
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - config:/config
+      - backups:/backups
+      - /:/source
+    networks:
+      - frontend 
+    restart: unless-stopped
