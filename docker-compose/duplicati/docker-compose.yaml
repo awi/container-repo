@@ -6,8 +6,8 @@ volumes:
   
 networks:
   default:
-    external:
-      name: frontend       
+    name: frontend       
+    external: true
 
 services:
   duplicati:
