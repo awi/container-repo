@@ -3,11 +3,11 @@ version: '2.1'
 volumes:
   config:
   backups:
-  
+
 networks:
   default:
-    name: frontend       
-    external: true
+    external:
+      name: frontend 
 
 services:
   duplicati:
@@ -21,6 +21,4 @@ services:
       - config:/config
       - backups:/backups
       - /:/source
-    networks:
-      - frontend 
     restart: unless-stopped
